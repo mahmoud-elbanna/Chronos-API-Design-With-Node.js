@@ -1,0 +1,5 @@
+Add product CRUD operations using Prisma
+Implement update management for products
+Implement update management operations
+Implement user registration functionality
+Implement user sign-in functionality
