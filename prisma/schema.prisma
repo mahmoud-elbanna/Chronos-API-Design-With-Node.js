@@ -17,3 +17,13 @@ model User {
   password  String
   products  Product[]
 }
+model Product {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  name        String   @db.VarChar(255)
+  belongsToId String
+  belongsTo   User     @relation(fields: [belongsToId], references: [id])
+  updates     Update[]
+  @@unique([id, belongsToId])
+}
