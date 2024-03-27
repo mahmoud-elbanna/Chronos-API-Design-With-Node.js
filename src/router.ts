@@ -21,3 +21,24 @@ router.put('/product/:id', body('name').isString(), handleInputErrors, (req, res
 
 router.post('/product', body('name').isString(), handleInputErrors, createProduct) // HTTP POST requests to the '/product' endpoint , invok func createProduct
 router.delete('/product/:id', deleteProduct)              // func deleteProduct to implement
+
+
+// Implement routes for CRUD operations on update resources.
+router.get('/update', getUpdates)
+router.get('/update/:id', getOneUpdate)
+router.put('/update/:id',                           // optional validation rules for fields like 'title', 'body', 'status', and 'version'.
+  body('title').optional(),
+  body('body').optional(),
+  body('status').isIn(['IN_PROGRESS', 'SHIPPED', 'DEPRECATED']).optional(),
+  body('version').optional(),
+  updateUpdate
+)
+
+router.post('/update',                 //  It specifies validation rules for required fields like 'title', 'body', and 'productId'.
+  body('title').exists().isString(),
+  body('body').exists().isString(),
+  body('productId').exists().isString(),
+  createUpdate
+)
+
+router.delete('/update/:id', deleteUpdate)
