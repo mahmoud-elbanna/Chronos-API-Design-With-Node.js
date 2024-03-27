@@ -9,3 +9,13 @@ export const comparePasswords = (password, hash) => {     // function that takes
 export const hashPassword = (password) => {            // password representing the plain-text password that you want to hash.
   return bcrypt.hash(password, 5)                      // bcrypt.hash to hash the passowrd (the plain-text password) and the number of the passowrd conatins 5 characters
 }
+
+export const createJWT = (user) => {                 // function to generate a JSON Web Token (JWT) based on user information
+  const token = jwt.sign({                           // the parameter user used to generate the JWT.
+      id: user.id,                                  // jwt.sign is a function used to sign a JWT payload. It takes two main parameters 
+      username: user.username                     // the first parameter is the user id and the username 
+    },                                           // process.env.JWT_SECRET is secret key used to sign the JWT. It's retrieved from the environment variable
+    process.env.JWT_SECRET
+  )
+  return token                                 // returns the generated JWT token
+}
