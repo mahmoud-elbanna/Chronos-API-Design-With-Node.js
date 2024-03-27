@@ -9,3 +9,13 @@ export const getOneUpdate = async (req, res) => {
 
   res.json({data: update})
 }
+
+export const getUpdates = async (req, res) => {
+  const products = await prisma.product.findMany({
+    where: {
+      belongsToId: req.user.id
+    },
+    include: {
+      updates: true
+    }
+  })
