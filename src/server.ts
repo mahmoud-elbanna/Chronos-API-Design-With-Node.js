@@ -6,3 +6,4 @@ import { protect } from './modules/auth'
 import { createNewUser, signin } from './handlers/user'
 
 const app = express()
+app.use(cors())
