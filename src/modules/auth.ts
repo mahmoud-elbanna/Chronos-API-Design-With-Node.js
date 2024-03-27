@@ -6,3 +6,6 @@ export const comparePasswords = (password, hash) => {     // function that takes
   return bcrypt.compare(password, hash)                  //  compares the plain-text password (password) with the bcrypt hash (hash)
 }                                                        //  returns a boolean indicating whether they match.
 
+export const hashPassword = (password) => {            // password representing the plain-text password that you want to hash.
+  return bcrypt.hash(password, 5)                      // bcrypt.hash to hash the passowrd (the plain-text password) and the number of the passowrd conatins 5 characters
+}
