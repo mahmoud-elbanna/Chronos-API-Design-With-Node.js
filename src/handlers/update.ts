@@ -19,3 +19,34 @@ export const getUpdates = async (req, res) => {
       updates: true
     }
   })
+
+  const updates = products.reduce((allUpdates, product) => {
+    return [...allUpdates, ...product.updates]
+  }, [])
+
+  res.json({data: updates})
+}
+export const createUpdate = async (req, res) => {
+  
+
+  const product = await prisma.product.findUnique({
+    where: {
+      id: req.body.productId
+    }
+  })
+
+  if (!product) {
+    // does not belong to user
+    return res.json({message: 'nope'})
+  }
+
+  const update = await prisma.update.create({
+    data: {
+      title: req.body.title,
+      body: req.body.body,
+      product: {connect: {id: product.id}}
+    }
+  })
+
+  res.json({data: update})
+}
