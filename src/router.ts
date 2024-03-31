@@ -3,6 +3,7 @@ import { body, oneOf, validationResult } from "express-validator"
 import { createUpdate, deleteUpdate, getOneUpdate, getUpdates, updateUpdate } from './handlers/update'
 import { createProduct, deleteProduct, getOneProduct, getProducts } from './handlers/product'
 import { handleInputErrors } from './modules/middleware'
+import { updateProduct } from './functions_helper/funcsUpdate'
 /*
 router file represents an Express router configuration for handling various routes related to products, updates, and update points.
 It utilizes the express-validator middleware for input validation.
@@ -16,6 +17,22 @@ router.get('/product', getProducts)    // Defines a route for handling HTTP GET 
 router.get('/product/:id', getOneProduct)  // The ':id' part in the route acts as a URL parameter and can be accessed within the handler function. When a GET request is made to this endpoint, it will invoke the getOneProduct
 
 router.put('/product/:id', body('name').isString(), handleInputErrors, (req, res) => {
+    const productId = req.params.id;   // Extract the product ID from the URL parameter
+
+    const updatedProductName = req.body.name;  // Extract the updated product name from the request body
+
+    // a function called `updateProduct`
+    // that takes the product ID and the updated name as arguments and updates the product
+    updateProduct(productId, updatedProductName)
+        .then(() => {
+            // If the product update was successful, send a success response
+            res.status(200).json({ message: 'Product updated successfully' });
+        })
+        .catch((error) => {
+            // If there was an error updating the product, send an error response
+            console.error('Error updating product:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        });
   
 }) // handleInputErrors middleware handles input validation errors and body('name').isString() middleware checks if the 'name' field in the request body is a string.
 
