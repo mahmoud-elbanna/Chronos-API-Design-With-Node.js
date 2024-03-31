@@ -1,1 +1,12 @@
 # Chronos-API-Design-With-Node.js
+- we used for this project bunch of commands here they are
+- npm i express --save " for express "
+- npm i typescript ts-node @types/node prisma --save-dev  " for type script and prisma ORM "
+- npx prisma init "  initalize Prisma "
+- npm i @prisma/client --save
+- npx prisma migrate dev --name init "connect the db to schema"
+- npm install nodemon --save-dev " Install nodemon "
+- npm i jsonwebtoken bcrypt dotenv "jwt and bcrypt"
+- npm i express-validator --save "validator"
+- npm i supertest @types/supertest jest @types/jest ts-jest " jest and supertest for testing"
+- npx ts-jest config:init "initialize a jest config"
