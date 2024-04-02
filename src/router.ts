@@ -4,7 +4,7 @@ import { createUpdate, deleteUpdate, getOneUpdate, getUpdates, updateUpdate } fr
 import { createProduct, deleteProduct, getOneProduct, getProducts } from './handlers/product'
 import { handleInputErrors } from './modules/middleware'
 /*
-router file represents an Express router configuration for handling various routes related to products, updates, and update points.
+router file represents an Express router configuration for handling various routes related to products, updates.
 It utilizes the express-validator middleware for input validation.
 */
 
