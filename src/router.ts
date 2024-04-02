@@ -9,7 +9,7 @@ It utilizes the express-validator middleware for input validation.
 */
 
 const router = Router()                // const router to initializes an Express router using Router() function provided by Express
-                                       // The router will be used to define the routes for handling product, update and updatepoint related request
+                                       // The router will be used to define the routes for handling product, update related request
 
 // Implement routes for CRUD operations on product resources
 router.get('/product', getProducts)    // Defines a route for handling HTTP GET requests to the '/product' endpoint. When a GET request is made to '/product', it will invoke the getProducts handler function
@@ -24,8 +24,8 @@ router.delete('/product/:id', deleteProduct)              // func deleteProduct 
 
 
 // Implement routes for CRUD operations on update resources.
-router.get('/update', getUpdates)
-router.get('/update/:id', getOneUpdate)
+router.get('/update', getUpdates)                  // a route for handling HTTP GET requests to the '/update' endpoint and execute the getUpdates
+router.get('/update/:id', getOneUpdate)            //  '/update/:id' endpoint. The ':id' part of the route is a URL parameter
 router.put('/update/:id',                           // optional validation rules for fields like 'title', 'body', 'status', and 'version'.
   body('title').optional(),
   body('body').optional(),
@@ -41,7 +41,7 @@ router.post('/update',                 //  It specifies validation rules for req
   createUpdate
 )
 
-router.delete('/update/:id', deleteUpdate)
+router.delete('/update/:id', deleteUpdate)  // a route for handling HTTP DELETE requests to the '/update/:id' endpoint and  The ':id' part of the route is a URL parameter 
+                                             // then execute the deleteUpdate
 
-
-export default router
+export default router  // that will help us to use the router file with the routes inside it in other files or folder
