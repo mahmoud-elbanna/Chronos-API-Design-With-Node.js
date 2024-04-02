@@ -33,7 +33,7 @@ router.put('/product/:id', body('name').isString(), handleInputErrors, (req, res
             console.error('Error updating product:', error);
             res.status(500).json({ error: 'Internal server error' });
         });
-  
+
 }) // handleInputErrors middleware handles input validation errors and body('name').isString() middleware checks if the 'name' field in the request body is a string.
 
 router.post('/product', body('name').isString(), handleInputErrors, createProduct) // HTTP POST requests to the '/product' endpoint , invok func createProduct
@@ -60,22 +60,5 @@ router.post('/update',                 //  It specifies validation rules for req
 
 router.delete('/update/:id', deleteUpdate)
 
-// Define placeholder routes for update point resources
-router.get('/updatepoint', () => {})                // PUT requests to update an existing update point
-router.get('/updatepoint/:id', () => {})              // The 'name' and 'description' fields are specified as optional and should be strings
-router.put('/updatepoint/:id',                         // When a PUT request is made to this endpoint, it will execute 
-  body('name').optional().isString(),                  // function to update the specified update point.
-  body('description').optional().isString(),
-  () => {}
-)
 
-router.post('/updatepoint',                          // func to create a new update point.
-  body('name').isString(),                          // The 'name' and 'description' fields are specified as required strings.
-  body('description').isString(),                   // and it requires the 'updateId' field to exist and be a string.
-  body('updateId').exists().isString(),            // POST request is made to this endpoint, it will execute the provided func
-  () => {}
-)
-
-router.delete('/updatepoint/:id', () => {})      // delete an existing update point by its ID.
-                                                // When a DELETE request is made to this endpoint, it will execute the function
-export default router                           // exports the router instance, making it available for use in other parts of the application.
+export default router
