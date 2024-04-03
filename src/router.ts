@@ -44,4 +44,9 @@ router.post('/update',                 //  It specifies validation rules for req
 router.delete('/update/:id', deleteUpdate)  // a route for handling HTTP DELETE requests to the '/update/:id' endpoint and  The ':id' part of the route is a URL parameter 
                                              // then execute the deleteUpdate
 
+router.use((err, req, res, next) => {
+  console.log(err)
+  res.json({message: 'in router handler'})
+})
+
 export default router  // that will help us to use the router file with the routes inside it in other files or folder
