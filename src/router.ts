@@ -44,9 +44,9 @@ router.post('/update',                 //  It specifies validation rules for req
 router.delete('/update/:id', deleteUpdate)  // a route for handling HTTP DELETE requests to the '/update/:id' endpoint and  The ':id' part of the route is a URL parameter 
                                              // then execute the deleteUpdate
 
-router.use((err, req, res, next) => {
-  console.log(err)
-  res.json({message: 'in router handler'})
-})
+router.use((err, req, res, next) => {     // router.use it's being used to handle errors for all routes in the router and next  to pass control to the next middleware 
+  console.log(err)                           // console.log to logs the error object to the console, so you can see details about the error that occurred.
+  res.json({message: 'in router handler'})   //  sends a JSON response back to the client with the message "in router handler"
+})                                            // the response indicating that the error was caught and handled by this middleware.
 
 export default router  // that will help us to use the router file with the routes inside it in other files or folder
