@@ -1,3 +1,4 @@
+# - The App We building an API for our imaginary ChangeLog app. This app allows a product manager or engineer post product updates for their users. The user needs to be able to read, create, update, and delete product updates
 # Chronos-API-Design-With-Node.js
 - we used for this project bunch of commands here they are
 - npm i express --save " for express "
